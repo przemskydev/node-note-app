@@ -1,5 +1,6 @@
 const chalk = require('chalk');
-const yargs = require('yargs')
+const { strict, string } = require('yargs');
+const yargs = require('yargs');
 const getNotes = require('./notes')
 
 // const command = process.argv[2]
@@ -17,14 +18,29 @@ const getNotes = require('./notes')
 yargs.command({
   command: 'add',
   describe: 'Add a new note',
-  handler: ()=>console.log(chalk.green.inverse("Adding notes!"))
+  builder: {
+    title: {
+      describe: "Note title",
+      demandOption: true,
+      type: 'string'
+    },
+    body: {
+      describe: "Note body",
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler: (argv)=>{
+    console.log(`Note title: ${argv.title}`)
+    console.log(`Note body: ${argv.body}`)
+  }
 })
 
 //Create remove command
 yargs.command({
   command: 'remove',
   describe: 'Remove a note',
-  handler: ()=>console.log(chalk.red.inverse("Removinging notes!"))
+  handler: ()=>console.log(chalk.red.inverse(`Removing note`))
 })
 
 //Create list command
@@ -41,4 +57,5 @@ yargs.command({
   handler: ()=>console.log(chalk.yellow.inverse("Reading a single note"))
 })
 
-console.log(yargs.argv)
+// console.log(yargs.argv)
+yargs.parse()
