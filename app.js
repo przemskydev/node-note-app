@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const { strict, string } = require('yargs');
 const yargs = require('yargs');
-const { getNotes, addNotes } = require('./notes')
+const { getNotes, addNotes, removeNote } = require('./notes')
 
 // const command = process.argv[2]
 
@@ -39,7 +39,14 @@ yargs.command({
 yargs.command({
   command: 'remove',
   describe: 'Remove a note',
-  handler: () => console.log(chalk.red.inverse(`Removing note`))
+  builder: {
+    title: {
+      describe: "Note title",
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler: (argv) => removeNote(argv.title)
 })
 
 //Create list command
