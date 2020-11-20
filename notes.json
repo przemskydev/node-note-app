@@ -1,1 +1,10 @@
-[{"title":"Third note","body":"Message"}]
+[
+  {
+    "title": "Third note",
+    "body": "Message"
+  },
+  {
+    "title": "New Note",
+    "body": "Some body msg"
+  }
+]

@@ -19,11 +19,9 @@ const addNotes = (title, body) => {
   } else {
     console.log(chalk.red.inverse("Note title taken!"))
   }
-
-  
 }
 
-const saveNotes = (notes) => {
+const saveNotes = notes => {
   const dataJSON = JSON.stringify(notes)
   fs.writeFileSync('notes.json', dataJSON)
 }
@@ -38,7 +36,7 @@ const loadNotes = () => {
   }
 }
 
-const removeNote = (title) => {
+const removeNote = title => {
   const notes = loadNotes()
   const newList = notes.filter(note=>note.title !== title) 
   
