@@ -5,7 +5,7 @@ const getNotes = () => "Your notes..."
 
 const addNotes = (title, body) => {
   const notes = loadNotes()
-  const duplicateNotes = notes.filter((note) => note.title === title)
+  const duplicateNotes = notes.filter(note => note.title === title)
 
   if (duplicateNotes.length === 0) {
     notes.push({
@@ -17,7 +17,7 @@ const addNotes = (title, body) => {
 
     console.log(chalk.green.inverse("New note added!"))
   } else {
-    console.log(chalk.red.inverse("Note title taken!"))
+    console.log(chalk.red.inverse("Note title taken!"))  
   }
 }
 
